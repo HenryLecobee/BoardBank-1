@@ -22,6 +22,8 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 		soundsEnabledSwitch.isOn = BankManager.shared.soundsEnabled
+        // Printing Debug Description for the element
+      //  print(soundsEnabledSwitch.debugDescription)
 		refreshText()
     }
 	
@@ -60,7 +62,9 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
 				if let quickAddAmount = Int(quickAddTextField.text!) {
 					BankManager.shared.quickAddAmount = quickAddAmount
 				}
-				BankManager.shared.soundsEnabled = soundsEnabledSwitch.isOn
+                if BankManager.shared.soundsEnabled {
+                    soundsEnabledSwitch.setOn(true, animated: true)
+                }
 				BankManager.shared.save()
 				refreshText()
 				let mainViewController = navigationController!.viewControllers.first as! MainViewController
