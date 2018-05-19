@@ -1,0 +1,89 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+
+  ################################### Environment ###################################
+
+  #xcversion(version: "9.2")
+
+  #################################### Constants ####################################
+
+  TEST_SIMULATORS = ['iPhone 8','iPhone SE','iPhone X']
+  TEST_DEVICES = [
+    'platform=iOS,id=9a31ef5bf7216fa79ec31af3f29901c209175937',
+    'platform=iOS,id=8a31ef5bf2216fa49ec31af3f29901c209075937'
+  ]
+
+  lane :test do
+    scan(
+      scheme: 'BoardBank', # Project scheme name
+      clean: true, # Clean project folder before test execution
+      device: 'iPhone 8' # Simulator for testing
+    )
+  end
+
+  ################################## Helper Methods ##################################
+
+  desc "Generate test reports"
+  def generate_report
+    puts "Generating Test Report ..."
+    sh 'xchtmlreport -r test_output/BoardBank.test_result'
+    puts "Test Report Succesfully generated"
+  end
+
+################################### Private Lanes ###################################
+
+  desc "Execute tests on simulators"
+  private_lane :parrallel_simulator_test do
+      scan(
+        scheme: 'BoardBank', # Project scheme name
+        clean: true, # clean project folder before test execution
+        devices: TEST_SIMULATORS,
+        result_bundle: "TestResults"
+      )
+      generate_report
+  end
+
+  desc "Execute tests on phisical devices"
+  private_lane :parrallel_device_test do
+    scan(
+      scheme: 'BoardBank', # Project scheme name
+      clean: true, # Clean project folder before test execution
+      destination: TEST_DEVICES, # Devices for testing
+      result_bundle: "TestResults" # To generate advanced test reports
+    )
+    generate_report
+  end
+
+  ################################### Public Lanes ###################################
+
+  desc "Execute tests on simulators with error handling"
+  lane :simulator_test do
+    begin
+      parrallel_simulator_test
+    rescue
+      generate_report
+    end
+  end
+
+  desc "Execute tests on phisical devices with error handling"
+  lane :device_test do
+    begin
+      parrallel_device_test
+    rescue
+      generate_report
+    end
+  end
+
+end
