@@ -13,10 +13,6 @@ default_platform(:ios)
 
 platform :ios do
 
-  ################################### Environment ###################################
-
-  #xcversion(version: "9.2")
-
   #################################### Constants ####################################
 
   TEST_SIMULATORS = ['iPhone 8','iPhone SE','iPhone X']
@@ -24,14 +20,6 @@ platform :ios do
     'platform=iOS,id=9a31ef5bf7216fa79ec31af3f29901c209175937',
     'platform=iOS,id=8a31ef5bf2216fa49ec31af3f29901c209075937'
   ]
-
-  lane :test do
-    scan(
-      scheme: 'BoardBank', # Project scheme name
-      clean: true, # Clean project folder before test execution
-      device: 'iPhone 8' # Simulator for testing
-    )
-  end
 
   ################################## Helper Methods ##################################
 
@@ -85,5 +73,4 @@ platform :ios do
       generate_report
     end
   end
-
 end
