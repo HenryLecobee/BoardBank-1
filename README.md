@@ -2,7 +2,7 @@
 
 ---
 
-This repository provides complete example of setting up XCUITest Framework using Screen Objects Pattern for iOS Automation Testing.  [Original Tutorial is available in my blog](https://medium.com/@akifev/mobile-automation-testing-getting-started-with-xcode-ui-testing-5051cf61b558).
+This repository provides complete example of setting up XCUITest Framework using Screen Objects Pattern for iOS Automation Testing. Original Tutorial is available in my blog: [Getting Started with Xcode UI Testing](https://medium.com/@akifev/mobile-automation-testing-getting-started-with-xcode-ui-testing-5051cf61b558), [Running iOS tests in parallel](https://medium.com/@akifev/mobile-automation-testing-running-ios-tests-in-parallel-d68bcb574fc4).
 
 ---
 
