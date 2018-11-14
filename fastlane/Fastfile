@@ -58,7 +58,12 @@ platform :ios do
 
   desc "Execute tests on simulators with error handling"
   lane :simulator_test do
-    parrallel_simulator_test
+    begin
+      parrallel_simulator_test
+    rescue => ex
+      generate_report
+      UI.error ex
+    end
   end
 
   desc "Execute tests on phisical devices with error handling"
