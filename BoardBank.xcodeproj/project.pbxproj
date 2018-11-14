@@ -21,6 +21,8 @@
 		79E3FFC91E1D886A00EFD89F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E3FFC81E1D886A00EFD89F /* SettingsViewController.swift */; };
 		79ED560B1E1C5113006247D2 /* PlayerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79ED560A1E1C5113006247D2 /* PlayerCollectionViewCell.swift */; };
 		79ED560D1E1C53EC006247D2 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79ED560C1E1C53EC006247D2 /* CircleView.swift */; };
+		AC63F8D2219C859C00BD1D11 /* environment_var_swift_struct.rb in Resources */ = {isa = PBXBuildFile; fileRef = AC63F8D1219C859C00BD1D11 /* environment_var_swift_struct.rb */; };
+		AC63F8D5219C867B00BD1D11 /* EnvironmentVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC63F8D4219C867B00BD1D11 /* EnvironmentVariables.swift */; };
 		B51FE543208EC50D002B4F36 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51FE542208EC50D002B4F36 /* HomeScreen.swift */; };
 		B51FE545208EC553002B4F36 /* AddPlayerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51FE544208EC553002B4F36 /* AddPlayerScreen.swift */; };
 		B51FE547208EC56F002B4F36 /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51FE546208EC56F002B4F36 /* SettingsScreen.swift */; };
@@ -54,6 +56,8 @@
 		79E3FFC81E1D886A00EFD89F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		79ED560A1E1C5113006247D2 /* PlayerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerCollectionViewCell.swift; sourceTree = "<group>"; };
 		79ED560C1E1C53EC006247D2 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		AC63F8D1219C859C00BD1D11 /* environment_var_swift_struct.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = environment_var_swift_struct.rb; sourceTree = "<group>"; };
+		AC63F8D4219C867B00BD1D11 /* EnvironmentVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentVariables.swift; sourceTree = "<group>"; };
 		B51FE538208EC4E3002B4F36 /* BoardBankUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoardBankUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B51FE542208EC50D002B4F36 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		B51FE544208EC553002B4F36 /* AddPlayerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlayerScreen.swift; sourceTree = "<group>"; };
@@ -120,11 +124,21 @@
 			path = MonoBank;
 			sourceTree = "<group>";
 		};
+		AC63F8D3219C866000BD1D11 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				AC63F8D4219C867B00BD1D11 /* EnvironmentVariables.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		B51FE539208EC4E3002B4F36 /* BoardBankUITests */ = {
 			isa = PBXGroup;
 			children = (
+				AC63F8D3219C866000BD1D11 /* Helpers */,
 				B51FE54A208EC647002B4F36 /* screens */,
 				B51FE548208EC5B4002B4F36 /* AddPlayerTests.swift */,
+				AC63F8D1219C859C00BD1D11 /* environment_var_swift_struct.rb */,
 			);
 			path = BoardBankUITests;
 			sourceTree = "<group>";
@@ -164,6 +178,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B51FE541208EC4E3002B4F36 /* Build configuration list for PBXNativeTarget "BoardBankUITests" */;
 			buildPhases = (
+				AC63F8CD219C856400BD1D11 /* ShellScript */,
 				B51FE534208EC4E3002B4F36 /* Sources */,
 				B51FE535208EC4E3002B4F36 /* Frameworks */,
 				B51FE536208EC4E3002B4F36 /* Resources */,
@@ -190,12 +205,12 @@
 				TargetAttributes = {
 					79B78BF51E17E00900181778 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 9325T7U3SR;
+						DevelopmentTeam = 8286YM76E3;
 						ProvisioningStyle = Automatic;
 					};
 					B51FE537208EC4E3002B4F36 = {
 						CreatedOnToolsVersion = 9.2;
-						DevelopmentTeam = 9325T7U3SR;
+						DevelopmentTeam = 8286YM76E3;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 79B78BF51E17E00900181778;
 					};
@@ -235,6 +250,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC63F8D2219C859C00BD1D11 /* environment_var_swift_struct.rb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +269,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
+		};
+		AC63F8CD219C856400BD1D11 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -ex\n\nDOTENV_FILE=${SRCROOT:-$FASTLANE_WORK_DIR}/fastlane/.env.test\n\nif [ -f $DOTENV_FILE ]\nthen\n    cat $DOTENV_FILE | while read LINE; do\n        if [[ $LINE != \"export\"* ]]\n        then\n            # prepend 'export' to line for sourcing later\n            echo \"export \"$LINE\n        else\n            echo $LINE\n        fi\n    done > tmp && source tmp && rm tmp\nfi\n\n# run ruby script to write to 'EnvironmentVariables.swift'\n${SRCROOT:-$FASTLANE_WORK_DIR}/BoardBankUITests/environment_var_swift_struct.rb\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -281,6 +314,7 @@
 				B51FE549208EC5B4002B4F36 /* AddPlayerTests.swift in Sources */,
 				B51FE547208EC56F002B4F36 /* SettingsScreen.swift in Sources */,
 				B51FE543208EC50D002B4F36 /* HomeScreen.swift in Sources */,
+				AC63F8D5219C867B00BD1D11 /* EnvironmentVariables.swift in Sources */,
 				B51FE545208EC553002B4F36 /* AddPlayerScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,7 +452,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9325T7U3SR;
+				DEVELOPMENT_TEAM = 8286YM76E3;
 				INFOPLIST_FILE = MonoBank/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -433,7 +467,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9325T7U3SR;
+				DEVELOPMENT_TEAM = 8286YM76E3;
 				INFOPLIST_FILE = MonoBank/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -458,7 +492,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9325T7U3SR;
+				DEVELOPMENT_TEAM = 8286YM76E3;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = BoardBankUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
@@ -485,7 +519,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9325T7U3SR;
+				DEVELOPMENT_TEAM = 8286YM76E3;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = BoardBankUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;

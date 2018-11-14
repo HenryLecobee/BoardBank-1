@@ -15,7 +15,7 @@ platform :ios do
 
   #################################### Constants ####################################
 
-  TEST_SIMULATORS = ['iPhone 8','iPhone SE','iPhone X']
+  TEST_SIMULATORS = ['iPhone SE']
   TEST_DEVICES = [
     'platform=iOS,id=9a31ef5bf7216fa79ec31af3f29901c209175937',
     'platform=iOS,id=8a31ef5bf2216fa49ec31af3f29901c209075937'
