@@ -63,6 +63,7 @@ platform :ios do
     rescue => ex
       generate_report
       UI.error ex
+      UI.user_error!("My error message")
     end
   end
 
