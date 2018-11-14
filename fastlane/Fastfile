@@ -27,6 +27,7 @@ platform :ios do
   def generate_report
     puts "Generating Test Report ..."
     sh 'xchtmlreport -r test_output/BoardBank.test_result'
+    sh '[[ ! -z "${BITRISE_DEPLOY_DIR}" ]] && mv test_output/BoardBank.test_result ${BITRISE_DEPLOY_DIR}' 
     puts "Test Report Succesfully generated"
   end
 
