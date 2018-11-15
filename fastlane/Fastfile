@@ -62,8 +62,7 @@ platform :ios do
       parrallel_simulator_test
     rescue => ex
       generate_report
-      UI.error ex
-      UI.user_error!("My error message")
+      UI.user_error! "tests failed"
     end
   end
 
